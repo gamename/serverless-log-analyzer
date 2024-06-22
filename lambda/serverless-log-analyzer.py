@@ -68,6 +68,8 @@ def lambda_handler(event, context):
             if log_group_name == current_log_group_name:
                 continue
 
+            print(f"Scanning log group: {log_group_name} in region: {region}")
+
             log_streams = logs_client.describe_log_streams(logGroupName=log_group_name, orderBy='LastEventTime',
                                                            descending=True, limit=1)
 
